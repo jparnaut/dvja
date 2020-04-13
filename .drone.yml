@@ -3,7 +3,7 @@ name: ci-pipeline
 
 steps:
   - name: Static Analysis
-    image: maven
+    image: maven:3.6.3-jdk-14
     commands:
     - mvn -Dmaven.repo.local=.m2 --batch-mode --settings pom.xml clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar -Dsonar.projectVersion=${DRONE_COMMIT_SHA} -Dsonar.projectKey=${DRONE_REPO_NAME} -Dsonar.projectName=${DRONE_REPO_NAME} -Dsonar.sources=. -Dsonar.scm.disabled=true -Dsonar.host.url=http://35.192.196.218:9000 -Dsonar.login=admin -Dsonar.password=^2!%\'GmN$\(_pd#?z8z.7\"\&!_=#%@
     environment:
