@@ -6,7 +6,7 @@ steps:
     image: maven
     commands:
     - mvn org.owasp:dependency-check-maven:aggregate
-    - mvn -Dmaven.repo.local=.m2 --batch-mode --settings pom.xml clean verify sonar:sonar -Dsonar.projectVersion=${DRONE_COMMIT_SHA} -Dsonar.projectKey=${DRONE_REPO_NAME} -Dsonar.projectName=${DRONE_REPO_NAME} -Dsonar.sources=. -Dsonar.scm.disabled=true -Dsonar.host.url=http://35.192.196.218:9000 -Dsonar.login=admin -Dsonar.password=^2!%\'GmN$\(_pd#?z8z.7\"\&!_=#%@
+    - mvn -Dmaven.repo.local=.m2 --batch-mode --settings pom.xml clean verify sonar:sonar -Dsonar.dependencyCheck.htmlReportPath=./target/dependency-check-report.html -Dsonar.projectVersion=${DRONE_COMMIT_SHA} -Dsonar.projectKey=${DRONE_REPO_NAME} -Dsonar.projectName=${DRONE_REPO_NAME} -Dsonar.sources=. -Dsonar.scm.disabled=true -Dsonar.host.url=http://35.192.196.218:9000 -Dsonar.login=admin -Dsonar.password=^2!%\'GmN$\(_pd#?z8z.7\"\&!_=#%@
     environment:
       MAVEN_OPTS: -Xms512m -Xmx3g
 
